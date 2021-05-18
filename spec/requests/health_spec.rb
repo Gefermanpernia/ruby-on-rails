@@ -6,13 +6,13 @@ RSpec.describe "Health endpoint", type: :request do
 		before { get '/health'}
 
 		it "should return OK" do
-			payload = JASON.parse(response.body)
+			payload = JSON.parse(response.body)
 			expect(payload).not_to be_empty
 			expect(payload['api']).to eq('OK')			
 		end
 	
 		it "should return status code 200" do
-			expect(response).to have_http_status(200)
+			expect(response).to have_http_status(:ok)
 		end
 	end
 end
